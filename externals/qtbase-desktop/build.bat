@@ -49,8 +49,8 @@ if "%compiler%"=="msvc" (
 		-qt-sql-sqlite -no-opengl -no-iconv -no-inotify -no-eventfd -largefile -no-fontconfig ^
 		-qt-zlib -qt-pcre -no-icu -no-gif -no-libpng -no-libjpeg -no-freetype -no-angle -no-openssl ^
 		-no-dbus -no-audio-backend -no-qml-debug -no-directwrite -no-style-windows -no-style-windowsxp ^
-		-no-style-windowsvista -no-style-fusion -no-style-windowsce -no-style-windowsmobile ^
-		-nomake examples -nomake tools -no-native-gestures
+		-no-style-windowsvista -no-style-fusion ^
+		-nomake examples -nomake tools
 	set MAKE_CMD=nmake
 
 	REM Build for x86
@@ -98,8 +98,8 @@ if "%compiler%"=="gcc" (
 			-qt-sql-sqlite -no-opengl -no-iconv -no-inotify -no-eventfd -largefile -no-fontconfig ^
 			-qt-zlib -qt-pcre -no-icu -no-gif -no-libpng -no-libjpeg -no-freetype -no-angle -no-openssl ^
 			-no-dbus -no-audio-backend -no-qml-debug -no-directwrite -no-style-windows -no-style-windowsxp ^
-			-no-style-windowsvista -no-style-fusion -no-style-windowsce -no-style-windowsmobile ^
-			-nomake examples -nomake tools -no-native-gestures
+			-no-style-windowsvista -no-style-fusion ^
+			-nomake examples -nomake tools
 
 		call :build
 		if %ERRORLEVEL% neq 0 (
@@ -113,11 +113,12 @@ if "%compiler%"=="gcc" (
 		set QTBASE_CONFIGURATION=^
 			-xplatform win32-g++-64 ^
 			-debug-and-release -opensource -confirm-license -c++std c++11 -no-gui -no-widgets -no-accessibility ^
-			-qt-sql-sqlite -no-opengl -no-iconv -no-inotify -no-eventfd -largefile -no-fontconfig ^
+			-sql-sqlite -qt-sqlite -no-opengl -no-iconv -no-inotify -no-eventfd -no-fontconfig ^
 			-qt-zlib -qt-pcre -no-icu -no-gif -no-libpng -no-libjpeg -no-freetype -no-angle -no-openssl ^
-			-no-dbus -no-audio-backend -no-qml-debug -no-directwrite -no-style-windows -no-style-windowsxp ^
-			-no-style-windowsvista -no-style-fusion -no-style-windowsce -no-style-windowsmobile ^
-			-nomake examples -nomake tools -no-vcproj -no-native-gestures
+			-no-dbus -no-directwrite -no-style-windows ^
+			-no-style-windowsvista -no-style-fusion ^
+			-nomake examples -nomake tools
+
 	
 		call :build
 		if %ERRORLEVEL% neq 0 (
